@@ -45,6 +45,10 @@ int main(int args, const char *argv[]) {
 }
 ```
 
+## 更新日志
+- `version: 1.0.1`
+  - 修复 `CODE_APP` 范围内可能存在内存页遗漏
+
 ## 许可证
 
 使用该项目需遵守 Apache License 2.0 许可协议。有关许可证请参阅 `LICENSE`.

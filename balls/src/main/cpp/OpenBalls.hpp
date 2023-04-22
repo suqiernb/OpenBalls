@@ -32,8 +32,8 @@
 #define WIDE_TYPE
 #define OPEN_BALLS_API
 #define OPEN_BALLS_IMPL
-#define OPEN_BALLS_VERSION "1.0.0"
-#define OPEN_BALLS_VERSION_NUM 1
+#define OPEN_BALLS_VERSION "1.0.1"
+#define OPEN_BALLS_VERSION_NUM 2
 #endif//OPEN_BALLS
 
 // rust types
@@ -131,7 +131,7 @@ struct Smap {
         if (strstr(name, "/system/fonts/") != nullptr)
             return REGION_BAD;
         if (strstr(name, ".so") != nullptr && (flags & (FLAG_READ | FLAG_EXEC | FLAG_PRIVATE)) == (FLAG_READ | FLAG_EXEC | FLAG_PRIVATE))
-            return strstr(name, "/data/app/") == nullptr ? REGION_CODE_SYS : REGION_CODE_APP;
+            return(!strstr(name, "/data/app/") && !strstr(name, "/data/data/")) ? REGION_CODE_SYS : REGION_CODE_APP;
         if (strstr(name, "[anon:libc_malloc") != nullptr || strstr(name, "[anon:scudo:") != nullptr)
             return REGION_C_ALLOC;
         if (strstr(name, "[anon:.bss") != nullptr)
